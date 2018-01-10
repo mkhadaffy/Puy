@@ -14,128 +14,117 @@ from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
 
 cl = PUY.LINE()
-cl.login(token="")
+cl.login(token="EofWHuBYIamu2z8BCzl3.Ri4/RX6YPvDWVXddSJv8mW.9l46gAlFB6h2hEa47M0NggsnEdgLXKoxOH4QZeRZeQ4=")
 cl.loginResult()
 
 print "\n[CIE BERHASIL LOGIN]"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpmsg ="""╠═════════════════
-╠-> google (text)
-╠-> playstore (text)
-╠-> Profileig (username)
-╠-> wikipedia (text)
-╠-> idline (text)
-╠-> ytsearch  (text)
-╠-> Time
-╠-> image (text)
-╠-> runtime
-╠-> Restart
-╠-> lirik (text)
-╠-> Mention
-╠-> setpoint on/off
-╠-> viewlastseen
-╠-> protect on/off
-╠-> qr on/off
-╠-> invite on/off
-╠-> Cancel on/off
-╠-> Simisimi:on/off
-╠-> Read on/off
-╠-> Getinfo @
-╠-> Getcontact @
-╠-> Ulti @
-╠-> speed
-╠-> Friendlist
-╠-> id@en
-╠-> en@id
-╠-> id@jp\n                 「OR」\n╠-> helppro\n╠-> helpself\n╠-> helpset\n╠-> helpgrup\n╠-> helptranslate
-╚═════════════════"""
+helpmsg ="""                 [*Command*]
+- google (text)
+- playstore (text)
+- Profileig (username)
+- wikipedia (text)
+- idline (text)
+- ytsearch  (text)
+- Time
+- image (text)
+- runtime
+- Restart
+- lirik (text)
+- Mention
+- setpoint on/off
+- viewlastseen
+- protect on/off
+- qr on/off
+- invite on/off
+- Cancel on/off
+- Simisimi:on/off
+- Read on/off
+- Getinfo @
+- Getcontact @
+- Ulti @
+- speed
+- Friendlist
+- id@en
+- en@id
+- id@jp"""
 
-helppro ="""
-╠═════════════════
-╠➩ protect on/off
-╠➩ qr on/off
-╠➩ invite on/off
-╠➩ cancel on/off
-╚═════════════════"""
+helppro ="""                  [*Pro*]
+- rotect on/off
+- qr on/off
+- invite on/off
+- cancel on/off"""
 
-helpself ="""
-╠═════════════════
-╠➩Me
-╠➩Myname:
-╠➩Mybio:
-╠➩Mypict
-╠➩Mycover
-╠➩My copy @
-╠➩My backup
-╠➩Getgroup image
-╠➩Getmid @
-╠➩Getprofile @
-╠➩Getinfo @
-╠➩Getname @
-╠➩Getbio @
-╠➩Getpict @
-╠➩Getcover @
-╠➩Mention
-╠➩setpoint on/off
-╠➩viewlastseen
-╠➩Micadd @
-╠➩Micdel @
-╚═════════════════"""
+helpself ="""                 [*Self*]
+- Me
+- Myname:
+- Mybio:
+- Mypict
+- Mycover
+- My copy @
+- My backup
+- Getgroup image
+- Getmid @
+- Getprofile @
+- Getinfo @
+- Getname @
+- Getbio @
+- Getpict @
+- Getcover @
+- Mention
+- Setpoint on/off
+- Viewlastseen
+- Micadd @
+- Micdel @"""
 
-helpset ="""
-╠═════════════════
-╠->contact on/off
-╠->autojoin on/off
-╠->auto leave on/off
-╠->autoadd on/off
-╠->like friend
-╠->link on
-╠->respon on/off
-╠->read on/off
-╠->simisimi on/off
-╚═════════════════"""
+helpset ="""                 [*Settings*]
+- contact on/off
+- autojoin on/off
+- auto leave on/off
+- autoadd on/off
+- like friend
+- link on
+- respon on/off
+- read on/off
+- simisimi on/off"""
 
-helpgrup ="""
-╠═════════════════
-╠->Link on
-╠->Url
-╠->Cancel
-╠->Gcreator
-╠->Kick @
-╠->Ulti @
-╠->Gname:
-╠->Gbroadcast:
-╠->Cbroadcast:
-╠->Infogrup
-╠->Gruplist
-╠->Friendlist
-╠->Blacklist
-╠->Ban @
-╠->Unban @
-╠->Clearban
-╠->Banlist
-╠->Contact ban
-╠->Midban
-╚═════════════════"""
+helpgrup ="""                 [*Group*]
+- Link on
+- Url
+- Cancel
+- Gcreator
+- Kick @
+- Ulti @
+- Gname:
+- Gbroadcast:
+- Cbroadcast:
+- Infogrup
+- Gruplist
+- Friendlist
+- Blacklist
+- Ban @
+- Unban @
+- Clearban
+- Banlist
+- Contact ban
+- Midban"""
 
-helptranslate ="""
-╠═════════════════
-╠->Id@en
-╠->En@id
-╠->Id@jp
-╠->Jp@id
-╠->Id@th
-╠->Th@id
-╠->Id@ar
-╠->Ar@id
-╠->Id@ko
-╠->Ko@id
-╠->Say-id
-╠->Say-en
-╠->Say-jp
-╚═════════════════"""
+helptranslate ="""                 [*Translating*]
+- Id@en
+- En@id
+- Id@jp
+- Jp@id
+- Id@th
+- Th@id
+- Id@ar
+- Ar@id
+- Id@ko
+- Ko@id
+- Say-id
+- Say-en
+- Say-jp"""
 
 KAC=[cl]
 mid = cl.getProfile().mid
@@ -392,7 +381,7 @@ def summon(to, nama):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
+    return '%%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
 
 def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
     tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
@@ -935,7 +924,6 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': "ub14f769cdf42d8c8a618ebe91ac2c8c7"}
                 cl.sendMessage(msg)
-                kk.sendMessage(msg)
             elif msg.text.lower() == 'autoadd on':
                 if wait["autoAdd"] == True:
                     if wait["lang"] == "JP":
@@ -2386,7 +2374,6 @@ def bot(op):
                         hasil += '\nDurasi : ' + song[1]
                         hasil += '\nLink Download : ' + song[4]
                         cl.sendText(msg.to, hasil)
-                        cl.sendText(msg.to, "Please Wait for audio...")
                         cl.sendAudioWithURL(msg.to, song[4])
                 except Exception as njer:
                         cl.sendText(msg.to, str(njer))
@@ -2402,8 +2389,36 @@ def bot(op):
                 try:
                     cl.sendImageWithURL(msg.to,path)
                 except:
-                    pass           
-            
+                    pass   
+                
+            elif "Checkig " in msg.text:
+                separate = msg.text.split(" ")
+                user = msg.text.replace(separate[0] + " ","")
+                if user.startswith("@"):
+                    user = user.replace("@","")
+                profile = "https://www.instagram.com/" + user
+                with requests.session() as x:
+                    x.headers['user-agent'] = 'Mozilla/5.0'
+                    end_cursor = ''
+                    for count in range(1, 999):
+                        print('PAGE: ', count)
+                        r = x.get(profile, params={'max_id': end_cursor})
+                    
+                        data = re.search(r'window._sharedData = (\{.+?});</script>', r.text).group(1)
+                        j    = json.loads(data)
+                    
+                        for node in j['entry_data']['ProfilePage'][0]['user']['media']['nodes']: 
+                            if node['is_video']:
+                                page = 'https://www.instagram.com/p/' + node['code']
+                                r = x.get(page)
+                                url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
+                                print(url)
+                                cl.sendVideoWithURL(msg.to,url)
+                            else:
+                                print (node['display_src'])
+                                cl.sendImageWithURL(msg.to,node['display_src'])
+                        end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)                	            
+                        
             elif "Profileig " in msg.text:
                     try:
                         instagram = msg.text.replace("Profileig ","")
@@ -2486,19 +2501,15 @@ def bot(op):
                 eltime = time.time() - mulai
                 van = "Bot has been active "+waktu(eltime)
                 cl.sendText(msg.to,van)
-
-        
 #================================ PUY SCRIPT STARTED ==============================================#
             elif "google " in msg.text:
                     a = msg.text.replace("google ","")
                     b = urllib.quote(a)
-                    cl.sendText(msg.to,"Sedang Mencari om...")
                     cl.sendText(msg.to, "https://www.google.com/" + b)
-                    cl.sendText(msg.to,"Ketemu om ^")
 
             elif cms(msg.text,["/creator","Creator"]):
                 msg.contentType = 13
-                msg.contentMetadata = {'mid': "ub14f769cdf42d8c8a618ebe91ac2c8c7"}
+                msg.contentMetadata = {'mid': "uac8e3eaf1eb2a55770bf10c3b2357c33"}
                 cl.sendMessage(msg)
 
             #elif msg.text in ["puy"]:
@@ -2507,23 +2518,23 @@ def bot(op):
           #      kk.sendText(msg.to,"Puy here")
           #      cl.sendText(msg.to,"Hadir semua puy!")
 
-            elif msg.text in ["Masuk","...","Join kuy"]: #Panggil Semua Bot
-              if msg.from_ in admin:
-                G = cl.getGroup(msg.to)
-                ginfo = cl.getGroup(msg.to)
-                G.preventJoinByTicket = False
-                cl.updateGroup(G)
-                invsend = 0
-                Ticket = cl.reissueGroupTicket(msg.to)
-                ki.acceptGroupInvitationByTicket(msg.to,Ticket)
-                time.sleep(0.01)
-                kk.acceptGroupInvitationByTicket(msg.to,Ticket)
-                time.sleep(0.01)
-                G = cl.getGroup(msg.to)
-                ginfo = cl.getGroup(msg.to)
-                G.preventJoinByTicket = True
-                cl.updateGroup(G)
-                print "Semua Sudah Lengkap"
+            #elif msg.text in ["Masuk","...","Join kuy"]: #Panggil Semua Bot
+            #  if msg.from_ in admin:
+            #    G = cl.getGroup(msg.to)
+            #    ginfo = cl.getGroup(msg.to)
+            #    G.preventJoinByTicket = False
+            #    cl.updateGroup(G)
+            #    invsend = 0
+            #    Ticket = cl.reissueGroupTicket(msg.to)
+            #    ki.acceptGroupInvitationByTicket(msg.to,Ticket)
+            #    time.sleep(0.01)
+            #    kk.acceptGroupInvitationByTicket(msg.to,Ticket)
+            #    time.sleep(0.01)
+            #    G = cl.getGroup(msg.to)
+            #    ginfo = cl.getGroup(msg.to)
+            #    G.preventJoinByTicket = True
+            #    cl.updateGroup(G)
+            #    print "Semua Sudah Lengkap"
 
             elif msg.text in ["Puy join"]:
               if msg.from_ in admin:
