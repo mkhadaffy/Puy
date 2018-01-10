@@ -9,122 +9,133 @@ from urllib import urlopen
 import requests
 from io import StringIO
 from threading import Thread
-from gtts import gTTS
+#from gtts import gTTS
 from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
 
 cl = PUY.LINE()
-cl.login(token="Eopk0UZeUEUbZtcBunf1.ngZoqf1v6Lt1PHh1KjNWGq.tPowVJ/sUqp30Z5xGfS2c5jSx/0jh4kbsoTkcy9Kg8U=")
+cl.login(token="")
 cl.loginResult()
 
 print "\n[CIE BERHASIL LOGIN]"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpmsg ="""                 [*Command*]
-- google (text)
-- playstore (text)
-- Profileig (username)
-- wikipedia (text)
-- idline (text)
-- ytsearch  (text)
-- Time
-- image (text)
-- runtime
-- Restart
-- lirik (text)
-- Mention
-- setpoint on/off
-- viewlastseen
-- protect on/off
-- qr on/off
-- invite on/off
-- Cancel on/off
-- Simisimi:on/off
-- Read on/off
-- Getinfo @
-- Getcontact @
-- Ulti @
-- speed
-- Friendlist
-- id@en
-- en@id
-- id@jp"""
+helpmsg ="""╠═════════════════
+╠-> google (text)
+╠-> playstore (text)
+╠-> Profileig (username)
+╠-> wikipedia (text)
+╠-> idline (text)
+╠-> ytsearch  (text)
+╠-> Time
+╠-> image (text)
+╠-> runtime
+╠-> Restart
+╠-> lirik (text)
+╠-> Mention
+╠-> setpoint on/off
+╠-> viewlastseen
+╠-> protect on/off
+╠-> qr on/off
+╠-> invite on/off
+╠-> Cancel on/off
+╠-> Simisimi:on/off
+╠-> Read on/off
+╠-> Getinfo @
+╠-> Getcontact @
+╠-> Ulti @
+╠-> speed
+╠-> Friendlist
+╠-> id@en
+╠-> en@id
+╠-> id@jp\n                 「OR」\n╠-> helppro\n╠-> helpself\n╠-> helpset\n╠-> helpgrup\n╠-> helptranslate
+╚═════════════════"""
 
-helppro ="""                  [*Pro*]
-- rotect on/off
-- qr on/off
-- invite on/off
-- cancel on/off"""
+helppro ="""
+╠═════════════════
+╠➩ protect on/off
+╠➩ qr on/off
+╠➩ invite on/off
+╠➩ cancel on/off
+╚═════════════════"""
 
-helpself ="""                 [*Self*]
-- Me
-- Myname:
-- Mybio:
-- Mypict
-- Mycover
-- My copy @
-- My backup
-- Getgroup image
-- Getmid @
-- Getprofile @
-- Getinfo @
-- Getname @
-- Getbio @
-- Getpict @
-- Getcover @
-- Mention
-- Setpoint on/off
-- Viewlastseen
-- Micadd @
-- Micdel @"""
+helpself ="""
+╠═════════════════
+╠➩Me
+╠➩Myname:
+╠➩Mybio:
+╠➩Mypict
+╠➩Mycover
+╠➩My copy @
+╠➩My backup
+╠➩Getgroup image
+╠➩Getmid @
+╠➩Getprofile @
+╠➩Getinfo @
+╠➩Getname @
+╠➩Getbio @
+╠➩Getpict @
+╠➩Getcover @
+╠➩Mention
+╠➩setpoint on/off
+╠➩viewlastseen
+╠➩Micadd @
+╠➩Micdel @
+╚═════════════════"""
 
-helpset ="""                 [*Settings*]
-- contact on/off
-- autojoin on/off
-- auto leave on/off
-- autoadd on/off
-- like friend
-- link on
-- respon on/off
-- read on/off
-- simisimi on/off"""
+helpset ="""
+╠═════════════════
+╠->contact on/off
+╠->autojoin on/off
+╠->auto leave on/off
+╠->autoadd on/off
+╠->like friend
+╠->link on
+╠->respon on/off
+╠->read on/off
+╠->simisimi on/off
+╚═════════════════"""
 
-helpgrup ="""                 [*Group*]
-- Link on
-- Url
-- Cancel
-- Gcreator
-- Kick @
-- Ulti @
-- Gname:
-- Gbroadcast:
-- Cbroadcast:
-- Infogrup
-- Gruplist
-- Friendlist
-- Blacklist
-- Ban @
-- Unban @
-- Clearban
-- Banlist
-- Contact ban
-- Midban"""
+helpgrup ="""
+╠═════════════════
+╠->Link on
+╠->Url
+╠->Cancel
+╠->Gcreator
+╠->Kick @
+╠->Ulti @
+╠->Gname:
+╠->Gbroadcast:
+╠->Cbroadcast:
+╠->Infogrup
+╠->Gruplist
+╠->Friendlist
+╠->Blacklist
+╠->Ban @
+╠->Unban @
+╠->Clearban
+╠->Banlist
+╠->Contact ban
+╠->Midban
+╚═════════════════"""
 
-helptranslate ="""                 [*Translating*]
-- Id@en
-- En@id
-- Id@jp
-- Jp@id
-- Id@th
-- Th@id
-- Id@ar
-- Ar@id
-- Id@ko
-- Ko@id
-- Say-id
-- Say-en
-- Say-jp"""
+helptranslate ="""
+╠═════════════════
+╠->Id@en
+╠->En@id
+╠->Id@jp
+╠->Jp@id
+╠->Id@th
+╠->Th@id
+╠->Id@ar
+╠->Ar@id
+╠->Id@ko
+╠->Ko@id
+╠->Say-id
+╠->Say-en
+╠->Say-jp
+╚═════════════════"""
 
 KAC=[cl]
 mid = cl.getProfile().mid
@@ -154,7 +165,6 @@ wait = {
     "wblack":False,
     "dblack":False,
     "clock":False,
-    "Sambutan":True,
     "cNames":"",
     "cNames":"",
     "blacklist":{},
@@ -381,7 +391,7 @@ def summon(to, nama):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
+    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
 
 def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
     tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
@@ -469,30 +479,30 @@ def bot(op):
                  if wait["detectMention"] == True:
                      contact = cl.getContact(msg.from_)
                      cName = contact.displayName
-                     balas = ["",cName + ", Dont Tag Me!\nim busy fvck.",cName + " ?"]
-                     ret_ = random.choice(balas)
+                     balas = ["",cName + " what ?, ", cName + " Kenapa? pc dia aja klo penting,  " + cName + "?", "Ada Perlu apa? jgn tag doang, " + cName + "?","Hmm?, ", "Jgn tag tag ah, "]
+                     ret_ = "." + random.choice(balas)
                      name = re.findall(r'@(\w+)', msg.text)
                      mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                      mentionees = mention['MENTIONEES']
                      for mention in mentionees:
                            if mention['M'] in Bots:
                                   cl.sendText(msg.to,ret_)
-                                  break                                
+                                  break            
                     
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["kickMention"] == True:
                      contact = cl.getContact(msg.from_)
                      cName = contact.displayName
-                     balas = ["",cName + "Apasi ampas!" + cName + "\nJgn tag tag ampas!"]
-                     ret_ = random.choice(balas)                     
+                     balas = ["",cName + " Ngapain Ngetag?, ", cName + " Kenapa Tag saya?,  " + cName + "?", "Ada Perlu apa, " + cName + "?","Tag doang tidak perlu., ", "Tersummon -_-, "]
+                     ret_ = "**Auto Respond** " + random.choice(balas)
                      name = re.findall(r'@(\w+)', msg.text)
                      mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                      mentionees = mention['MENTIONEES']
                      for mention in mentionees:
                            if mention['M'] in Bots:
                                   cl.sendText(msg.to,ret_)
-                                  random.choice(KAC).kickoutFromGroup(msg.to,[msg.from_])
-                                  break 
+                                  cl.kickoutFromGroup(msg.to,[msg.from_])
+                                  break
             
             if msg.contentType == 13:
                 if wait['invite'] == True:
@@ -651,19 +661,19 @@ def bot(op):
                     cl.sendText(msg.to,helptranslate)
                 else:
                     cl.sendText(msg.to,helptranslate)
-            elif msg.text in ["Speed","Sp"]:
-                start = time.time()
-                cl.sendText(msg.to, "...")
-                elapsed_time = time.time() - start
-                cl.sendText(msg.to, "%sDetik" % (elapsed_time))
+            #elif msg.text in ["Sp","Speed","speed"]:
+            #    start = time.time()
+            #    cl.sendText(msg.to, "「Come Here」")
+            #    elapsed_time = time.time() - start
+            #    cl.sendText(msg.to, "%sseconds" % (elapsed_time))
                 
-            #elif msg.text == ".Speed":
-            #        cl.sendText(msg.to,"「Come Here」")
-            #        start = time.time()
-            #        for i in range(3000):
-            #            1+1
-            #        elsp = time.time() - start
-            #        cl.sendText(msg.to,"%s/Detikี" % (elsp))    
+            elif msg.text == ".Speed":
+                    cl.sendText(msg.to,"「Come Here」")
+                    start = time.time()
+                    for i in range(3000):
+                        1+1
+                    elsp = time.time() - start
+                    cl.sendText(msg.to,"%s/Detikี" % (elsp))    
                 
             elif msg.text.lower() == 'crash':
                 msg.contentType = 13
@@ -924,6 +934,7 @@ def bot(op):
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': "ub14f769cdf42d8c8a618ebe91ac2c8c7"}
                 cl.sendMessage(msg)
+                kk.sendMessage(msg)
             elif msg.text.lower() == 'autoadd on':
                 if wait["autoAdd"] == True:
                     if wait["lang"] == "JP":
@@ -963,23 +974,6 @@ def bot(op):
                 else:
                     wait["comment"] = c
                     cl.sendText(msg.to,"Ini telah diubah\n\n" + c)
-            elif msg.text in ["sambutan on"]:
-                if wait["Sambutan"] == True:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"Sambutan Di Aktifkan?(*´?`*)?")
-                else:
-                    wait["Sambutan"] = True
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"Sudah On?(´?`)/")
-
-            elif msg.text in ["sambutan off"]:
-                if wait["Sambutan"] == False:
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"Sambutan Di Nonaktifkan( ^?^)")
-                else:
-                    wait["Sambutan"] = False
-                    if wait["lang"] == "JP":
-                        cl.sendText(msg.to,"Sudah Off(p'?`?)")                    
             elif msg.text in ["Com on","Com:on","Comment on"]:
                 if wait["commentOn"] == True:
                     if wait["lang"] == "JP":
@@ -1869,8 +1863,8 @@ def bot(op):
                     cu = cl.channel.getCover(mid)          
                     path = str(cu)
                     cl.sendText(msg.to, path)
-            elif "mid @" in msg.text:
-                _name = msg.text.replace("mid @","")
+            elif "Getmid @" in msg.text:
+                _name = msg.text.replace("Getmid @","")
                 _nametarget = _name.rstrip(' ')
                 gs = cl.getGroup(msg.to)
                 for g in gs.members:
@@ -1878,7 +1872,7 @@ def bot(op):
                         cl.sendText(msg.to, g.mid)
                     else:
                         pass
-            elif "info" in msg.text:
+            elif "Getinfo" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
                 contact = cl.getContact(key1)
@@ -1887,7 +1881,7 @@ def bot(op):
                     cl.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n\nHeader :\n" + str(cu))
                 except:
                     cl.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + contact.mid + "\n\nBio :\n" + contact.statusMessage + "\n\nProfile Picture :\n" + str(cu))
-            elif "bio" in msg.text:
+            elif "Getbio" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
                 contact = cl.getContact(key1)
@@ -1905,7 +1899,7 @@ def bot(op):
                     cl.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
                 except:
                     cl.sendText(msg.to, "===[DisplayName]===\n" + contact.displayName)
-            elif "profile" in msg.text:
+            elif "Getprofile" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]
                 contact = cl.getContact(key1)
@@ -1920,16 +1914,16 @@ def bot(op):
                     cl.sendImageWithURL(msg.to,path)
                 except:
                     pass
-            elif "contact" in msg.text:
+            elif "Getcontact" in msg.text:
                 key = eval(msg.contentMetadata["MENTION"])
                 key1 = key["MENTIONEES"][0]["M"]                
                 mmid = cl.getContact(key1)
                 msg.contentType = 13
                 msg.contentMetadata = {"mid": key1}
                 cl.sendMessage(msg)
-            elif "pict @" in msg.text:
+            elif "Getpict @" in msg.text:
                 print "[Command]dp executing"
-                _name = msg.text.replace("pict @","")
+                _name = msg.text.replace("Getpict @","")
                 _nametarget = _name.rstrip('  ')
                 gs = cl.getGroup(msg.to)
                 targets = []
@@ -1947,9 +1941,9 @@ def bot(op):
                         except Exception as e:
                             raise e
                 print "[Command]dp executed"
-            elif "vid @" in msg.text:
+            elif "Getvid @" in msg.text:
                 print "[Command]dp executing"
-                _name = msg.text.replace("vid @","")
+                _name = msg.text.replace("Getvid @","")
                 _nametarget = _name.rstrip('  ')
                 gs = cl.getGroup(msg.to)
                 targets = []
@@ -1967,9 +1961,9 @@ def bot(op):
                         except Exception as e:
                             raise e
                 print "[Command]dp executed"
-            elif "picturl @" in msg.text:
+            elif "Picturl @" in msg.text:
                 print "[Command]dp executing"
-                _name = msg.text.replace("picturl @","")
+                _name = msg.text.replace("Picturl @","")
                 _nametarget = _name.rstrip('  ')
                 gs = cl.getGroup(msg.to)
                 targets = []
@@ -1987,9 +1981,9 @@ def bot(op):
                         except Exception as e:
                             raise e
                 print "[Command]dp executed"
-            elif "cover @" in msg.text:
+            elif "Getcover @" in msg.text:
                 print "[Command]cover executing"
-                _name = msg.text.replace("cover @","")    
+                _name = msg.text.replace("Getcover @","")    
                 _nametarget = _name.rstrip('  ')
                 gs = cl.getGroup(msg.to)
                 targets = []
@@ -2008,9 +2002,9 @@ def bot(op):
                         except Exception as e:
                             raise e
                 print "[Command]cover executed"
-            elif "coverurl @" in msg.text:
+            elif "Coverurl @" in msg.text:
                 print "[Command]cover executing"
-                _name = msg.text.replace("coverurl @","")    
+                _name = msg.text.replace("Coverurl @","")    
                 _nametarget = _name.rstrip('  ')
                 gs = cl.getGroup(msg.to)
                 targets = []
@@ -2029,17 +2023,17 @@ def bot(op):
                         except Exception as e:
                             raise e
                 print "[Command]cover executed"
-            elif "getgrup image" in msg.text:
+            elif "Getgrup image" in msg.text:
                 group = cl.getGroup(msg.to)
                 path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
                 cl.sendImageWithURL(msg.to,path)
-            elif "urlgrup image" in msg.text:
+            elif "Urlgrup image" in msg.text:
                 group = cl.getGroup(msg.to)
                 path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
                 cl.sendText(msg.to,path)
-            elif "copy @" in msg.text:
+            elif "Mycopy @" in msg.text:
                    print "[COPY] Ok"
-                   _name = msg.text.replace("copy @","")
+                   _name = msg.text.replace("Mycopy @","")
                    _nametarget = _name.rstrip('  ')
                    gs = cl.getGroup(msg.to)
                    targets = []
@@ -2055,7 +2049,7 @@ def bot(op):
                                cl.sendText(msg.to, "Copied.")
                             except Exception as e:
                                 print e
-            elif msg.text in ["backup","mybackup"]:
+            elif msg.text in ["Mybackup","mybackup"]:
                 try:
                     cl.updateDisplayPicture(backup.pictureStatus)
                     cl.updateProfile(backup)
@@ -2374,6 +2368,7 @@ def bot(op):
                         hasil += '\nDurasi : ' + song[1]
                         hasil += '\nLink Download : ' + song[4]
                         cl.sendText(msg.to, hasil)
+                        cl.sendText(msg.to, "Please Wait for audio...")
                         cl.sendAudioWithURL(msg.to, song[4])
                 except Exception as njer:
                         cl.sendText(msg.to, str(njer))
@@ -2389,36 +2384,8 @@ def bot(op):
                 try:
                     cl.sendImageWithURL(msg.to,path)
                 except:
-                    pass   
-                
-            elif "Checkig " in msg.text:
-                separate = msg.text.split(" ")
-                user = msg.text.replace(separate[0] + " ","")
-                if user.startswith("@"):
-                    user = user.replace("@","")
-                profile = "https://www.instagram.com/" + user
-                with requests.session() as x:
-                    x.headers['user-agent'] = 'Mozilla/5.0'
-                    end_cursor = ''
-                    for count in range(1, 999):
-                        print('PAGE: ', count)
-                        r = x.get(profile, params={'max_id': end_cursor})
-                    
-                        data = re.search(r'window._sharedData = (\{.+?});</script>', r.text).group(1)
-                        j    = json.loads(data)
-                    
-                        for node in j['entry_data']['ProfilePage'][0]['user']['media']['nodes']: 
-                            if node['is_video']:
-                                page = 'https://www.instagram.com/p/' + node['code']
-                                r = x.get(page)
-                                url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
-                                print(url)
-                                cl.sendVideoWithURL(msg.to,url)
-                            else:
-                                print (node['display_src'])
-                                cl.sendImageWithURL(msg.to,node['display_src'])
-                        end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)                	            
-                        
+                    pass           
+            
             elif "Profileig " in msg.text:
                     try:
                         instagram = msg.text.replace("Profileig ","")
@@ -2501,15 +2468,19 @@ def bot(op):
                 eltime = time.time() - mulai
                 van = "Bot has been active "+waktu(eltime)
                 cl.sendText(msg.to,van)
+
+        
 #================================ PUY SCRIPT STARTED ==============================================#
             elif "google " in msg.text:
                     a = msg.text.replace("google ","")
                     b = urllib.quote(a)
+                    cl.sendText(msg.to,"Sedang Mencari om...")
                     cl.sendText(msg.to, "https://www.google.com/" + b)
+                    cl.sendText(msg.to,"Ketemu om ^")
 
             elif cms(msg.text,["/creator","Creator"]):
                 msg.contentType = 13
-                msg.contentMetadata = {'mid': "uac8e3eaf1eb2a55770bf10c3b2357c33"}
+                msg.contentMetadata = {'mid': "ub14f769cdf42d8c8a618ebe91ac2c8c7"}
                 cl.sendMessage(msg)
 
             #elif msg.text in ["puy"]:
@@ -2518,23 +2489,23 @@ def bot(op):
           #      kk.sendText(msg.to,"Puy here")
           #      cl.sendText(msg.to,"Hadir semua puy!")
 
-            #elif msg.text in ["Masuk","...","Join kuy"]: #Panggil Semua Bot
-            #  if msg.from_ in admin:
-            #    G = cl.getGroup(msg.to)
-            #    ginfo = cl.getGroup(msg.to)
-            #    G.preventJoinByTicket = False
-            #    cl.updateGroup(G)
-            #    invsend = 0
-            #    Ticket = cl.reissueGroupTicket(msg.to)
-            #    ki.acceptGroupInvitationByTicket(msg.to,Ticket)
-            #    time.sleep(0.01)
-            #    kk.acceptGroupInvitationByTicket(msg.to,Ticket)
-            #    time.sleep(0.01)
-            #    G = cl.getGroup(msg.to)
-            #    ginfo = cl.getGroup(msg.to)
-            #    G.preventJoinByTicket = True
-            #    cl.updateGroup(G)
-            #    print "Semua Sudah Lengkap"
+            elif msg.text in ["Masuk","...","Join kuy"]: #Panggil Semua Bot
+              if msg.from_ in admin:
+                G = cl.getGroup(msg.to)
+                ginfo = cl.getGroup(msg.to)
+                G.preventJoinByTicket = False
+                cl.updateGroup(G)
+                invsend = 0
+                Ticket = cl.reissueGroupTicket(msg.to)
+                ki.acceptGroupInvitationByTicket(msg.to,Ticket)
+                time.sleep(0.01)
+                kk.acceptGroupInvitationByTicket(msg.to,Ticket)
+                time.sleep(0.01)
+                G = cl.getGroup(msg.to)
+                ginfo = cl.getGroup(msg.to)
+                G.preventJoinByTicket = True
+                cl.updateGroup(G)
+                print "Semua Sudah Lengkap"
 
             elif msg.text in ["Puy join"]:
               if msg.from_ in admin:
@@ -3258,29 +3229,17 @@ def bot(op):
                     G.preventJoinByTicket = True
                     cl.kickoutFromGroup(op.param1,[op.param3])
                     cl.updateGroup(G)
-                    
         if op.type == 17:
-          if wait["Sambutan"] == True:
-            if op.param2 in admin:
-                return
-            ginfo = cl.getGroup(op.param1)
-            contact = cl.getContact(op.param2)
-            image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-            cl.sendText(op.param1,"Hei " + cl.getContact(op.param2).displayName + "\nSelamat datang di " + str(ginfo.name) + ".")
-            cl.sendImageWithURL(op.param1,image)
-            print "MEMBER JOIN TO GROUP"
-    
+          if op.param2 in Bots:
+            return
+          ginfo = cl.getGroup(op.param1)
+          random.choice(KAC).sendText(op.param1, "Selamat Datang.")
+          print "MEMBER HAS JOIN THE GROUP"
         if op.type == 15:
-          if wait["Sambutan"] == True:
-            if op.param2 in admin:
-                return
-            ginfo = cl.getGroup(op.param1)
-            contact = cl.getContact(op.param2)
-            image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-            cl.sendText(op.param1,"Selamat Jalan " + cl.getContact(op.param2).displayName +  ".")
-            random.choice(KAC).inviteIntoGroup(op.param1,[op.param2])
-            cl.sendImageWithURL(op.param1,image)
-            print "MEMBER HAS LEFT THE GROUP"
+          if op.param2 in Bots:
+             return
+          random.choice(KAC).sendText(op.param1, "Selamat Jalan.")
+          print "MEMBER HAS LEFT THE GROUP"
 #------------------------------------------------------------------------------#
         if op.type == 55:
             try:
