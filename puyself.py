@@ -14,7 +14,7 @@ from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib
 
 cl = PUY.LINE()
-cl.login(token="EnPdZfR01tieO491bBm3.Ri4/RX6YPvDWVXddSJv8mW.RAg5XT6OvcSY0FtcWMC1kZbeaGu4DhsO0U7Rg8te60M=")
+cl.login(token="")
 cl.loginResult()
 
 print "\n[CIE BERHASIL LOGIN]"
