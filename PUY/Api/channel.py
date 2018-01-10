@@ -42,7 +42,7 @@ class Channel:
         self.transport.path = self.channel_query_path
 
     def login(self):
-        result = self.client.issueChannelToken("1341209850")
+        result = self.client.issueChannelToken("1341208850")
 
         self.channel_access_token = result.channelAccessToken
         self.token = result.token
