@@ -1,4 +1,4 @@
-# PUY BOT
+# PUY
 
-Supported By ObelixBOT
+Supported By ObelixT3am
 
