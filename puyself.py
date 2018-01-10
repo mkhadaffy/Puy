@@ -14,7 +14,7 @@ from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
 
 cl = PUY.LINE()
-cl.login(token="AAkH/zB7InNpZCI6ImlRdlFWWFNiRGpVQnJIa0ZBQXY4IiwidXBncmFkZXMiOlsid2Vic29ja2V0Il0sInBpbmdJbnRlcnZhbCI6MjUwMDAsInBpbmdUaW1lb3V0Ijo2MDAwMH0=")
+cl.login(token="")
 cl.loginResult()
 
 print "\n[CIE BERHASIL LOGIN]"
