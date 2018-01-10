@@ -14,7 +14,7 @@ from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
 
 cl = PUY.LINE()
-cl.login(token="")
+cl.login(token="EofWHuBYIamu2z8BCzl3.Ri4/RX6YPvDWVXddSJv8mW.9l46gAlFB6h2hEa47M0NggsnEdgLXKoxOH4QZeRZeQ4=")
 cl.loginResult()
 
 print "\n[CIE BERHASIL LOGIN]"
@@ -662,19 +662,19 @@ def bot(op):
                     cl.sendText(msg.to,helptranslate)
                 else:
                     cl.sendText(msg.to,helptranslate)
-            #elif msg.text in ["Sp","Speed","speed"]:
-            #    start = time.time()
-            #    cl.sendText(msg.to, "「Come Here」")
-            #    elapsed_time = time.time() - start
-            #    cl.sendText(msg.to, "%sseconds" % (elapsed_time))
+            elif msg.text in ["Speed","Sp"]:
+                start = time.time()
+                cl.sendText(msg.to, "...")
+                elapsed_time = time.time() - start
+                cl.sendText(msg.to, "%sDetik" % (elapsed_time))
                 
-            elif msg.text == ".Speed":
-                    cl.sendText(msg.to,"「Come Here」")
-                    start = time.time()
-                    for i in range(3000):
-                        1+1
-                    elsp = time.time() - start
-                    cl.sendText(msg.to,"%s/Detikี" % (elsp))    
+            #elif msg.text == ".Speed":
+            #        cl.sendText(msg.to,"「Come Here」")
+            #        start = time.time()
+            #        for i in range(3000):
+            #            1+1
+            #        elsp = time.time() - start
+            #        cl.sendText(msg.to,"%s/Detikี" % (elsp))    
                 
             elif msg.text.lower() == 'crash':
                 msg.contentType = 13
