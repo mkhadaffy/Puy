@@ -9,132 +9,136 @@ from urllib import urlopen
 import requests
 from io import StringIO
 from threading import Thread
-#from gtts import gTTS
+from gtts import gTTS
 from googletrans import Translator
 #JANGAN LUPA =>  sudo pip install bs4 => sudo pip install BeautifulSoup => sudo pip install urllib => sudo pip install requests => sudo pip install gTTS
+#BTW SETINGANNYA TOKEN CHROME YE, KLO MAU GANTI, GANTI AJE SERAH.
 
 cl = PUY.LINE()
+#cl.login(qr=True)
 cl.login(token="")
 cl.loginResult()
 
-print "\n[CIE BERHASIL LOGIN]"
+print "\n[CIE LOGIN CIEEEE]"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 helpmsg ="""╠═════════════════
-╠-> google (text)
-╠-> playstore (text)
-╠-> Profileig (username)
-╠-> wikipedia (text)
-╠-> idline (text)
-╠-> ytsearch  (text)
-╠-> Time
-╠-> image (text)
-╠-> runtime
 ╠-> Restart
-╠-> lirik (text)
 ╠-> Mention
 ╠-> setpoint on/off
 ╠-> viewlastseen
-╠-> protect on/off
-╠-> qr on/off
-╠-> invite on/off
-╠-> Cancel on/off
-╠-> Simisimi:on/off
-╠-> Read on/off
-╠-> Getinfo @
-╠-> Getcontact @
 ╠-> Ulti @
-╠-> speed
+╠-> Speed
+╠-> Time
 ╠-> Friendlist
 ╠-> id@en
 ╠-> en@id
-╠-> id@jp\n                 「OR」\n╠-> helppro\n╠-> helpself\n╠-> helpset\n╠-> helpgrup\n╠-> helptranslate
+╠-> id@jp\n                 「+」\n╠-> help protect\n╠-> help self\n╠-> help set\n╠-> help grup\n╠-> help translate
 ╚═════════════════"""
 
 helppro ="""
 ╠═════════════════
-╠➩ protect on/off
-╠➩ qr on/off
-╠➩ invite on/off
-╠➩ cancel on/off
+╠-> protect on/off
+╠-> qr on/off
+╠-> invite on/off
+╠-> cancel on/off
+╚═════════════════"""
+
+helpmedia ="""
+╠═════════════════
+╠-> google (text)
+╠-> playstore (text)
+╠-> Profileig (username)
+╠-> instagram (username)
+╠-> wikipedia (text)
+╠-> idline (text)
+╠-> ytsearch  (text)
+╠-> Image (text)
+╠-> Zodiak tanggal-bulan-tahun
+╠-> lirik (text)
 ╚═════════════════"""
 
 helpself ="""
 ╠═════════════════
-╠➩Me
-╠➩Myname:
-╠➩Mybio:
-╠➩Mypict
-╠➩Mycover
-╠➩My copy @
-╠➩My backup
-╠➩Getgroup image
-╠➩Getmid @
-╠➩Getprofile @
-╠➩Getinfo @
-╠➩Getname @
-╠➩Getbio @
-╠➩Getpict @
-╠➩Getcover @
-╠➩Mention
-╠➩setpoint on/off
-╠➩viewlastseen
-╠➩Micadd @
-╠➩Micdel @
+╠-> Me
+╠-> Myname:
+╠-> Mybio:
+╠-> Mypict
+╠-> Mycover
+╠-> My copy @
+╠-> My backup
+╠-> Getgroup image
+╠-> Getmid @
+╠-> Getcontact @
+╠-> Getprofile @
+╠-> Getinfo @
+╠-> Getname @
+╠-> Getbio @
+╠-> Getpict @
+╠-> Getcover @
+╠-> Mention
+╠-> setpoint on/off
+╠-> viewlastseen
+╠-> Micadd @
+╠-> Micdel @
 ╚═════════════════"""
 
 helpset ="""
 ╠═════════════════
-╠->contact on/off
-╠->autojoin on/off
-╠->auto leave on/off
-╠->autoadd on/off
-╠->like friend
-╠->link on
-╠->respon on/off
-╠->read on/off
-╠->simisimi on/off
+╠-> qr on/off
+╠-> protect on/off
+╠-> contact on/off
+╠-> autojoin on/off
+╠-> auto leave on/off
+╠-> cancel on/off
+╠-> invite on/off
+╠-> autoadd on/off
+╠-> like friend
+╠-> link on
+╠-> respon on/off
+╠-> read on/off
+╠-> simisimi on/off
 ╚═════════════════"""
 
 helpgrup ="""
 ╠═════════════════
-╠->Link on
-╠->Url
-╠->Cancel
-╠->Gcreator
-╠->Kick @
-╠->Ulti @
-╠->Gname:
-╠->Gbroadcast:
-╠->Cbroadcast:
-╠->Infogrup
-╠->Gruplist
-╠->Friendlist
-╠->Blacklist
-╠->Ban @
-╠->Unban @
-╠->Clearban
-╠->Banlist
-╠->Contact ban
-╠->Midban
+╠-> Link on
+╠-> Url
+╠-> Cancel
+╠-> Gcreator
+╠-> Kick @
+╠-> Ulti @
+╠-> Gname:
+╠-> Gbroadcast:
+╠-> Cbroadcast:
+╠-> Infogrup
+╠-> Gruplist
+╠-> Friendlist
+╠-> Blacklist
+╠-> Ban @
+╠-> Unban @
+╠-> Clearban
+╠-> Banlist
+╠-> Contact ban
+╠-> Midban
 ╚═════════════════"""
 
 helptranslate ="""
 ╠═════════════════
-╠->Id@en
-╠->En@id
-╠->Id@jp
-╠->Jp@id
-╠->Id@th
-╠->Th@id
-╠->Id@ar
-╠->Ar@id
-╠->Id@ko
-╠->Ko@id
-╠->Say-id
-╠->Say-en
-╠->Say-jp
+╠-> Id@en
+╠-> En@id
+╠-> Id@jp
+╠-> Jp@id
+╠-> Id@th
+╠-> Th@id
+╠-> Id@ar
+╠-> Ar@id
+╠-> Id@ko
+╠-> Ko@id
+╠-> Say-id
+╠-> Say-en
+╠-> Say-jp
 ╚═════════════════"""
 
 KAC=[cl]
@@ -656,6 +660,11 @@ def bot(op):
                     cl.sendText(msg.to,helpset)
                 else:
                     cl.sendText(msg.to,helpset)
+            elif msg.text.lower() == 'help media':
+                if wait["lang"] == "JP":
+                    cl.sendText(msg.to,helpmedia)
+                else:
+                    cl.sendText(msg.to,helpmedia)                    
             elif msg.text.lower() == 'help translate':
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,helptranslate)
@@ -2406,6 +2415,28 @@ def bot(op):
                     except Exception as e:
                         cl.sendText(msg.to, str(e))
 
+            elif 'instagram ' in msg.text.lower():
+                try:
+                    instagram = msg.text.lower().replace("instagram ","")
+                    html = requests.get('https://www.instagram.com/' + instagram + '/?')
+                    soup = BeautifulSoup(html.text, 'html5lib')
+                    data = soup.find_all('meta', attrs={'property':'og:description'})
+                    text = data[0].get('content').split()
+                    data1 = soup.find_all('meta', attrs={'property':'og:image'})
+                    text1 = data1[0].get('content').split()
+                    user = "Name: " + text[-2] + "\n"
+                    user1 = "Username: " + text[-1] + "\n"
+                    followers = "Followers: " + text[0] + "\n"
+                    following = "Following: " + text[2] + "\n"
+                    post = "Post: " + text[4] + "\n"
+                    link = "Link: " + "https://www.instagram.com/" + instagram
+                    detail = "********************\n"
+                    details = "\n********************="
+                    cl.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
+                    cl.sendImageWithURL(msg.to, text1[0])
+                except Exception as njer:
+                	cl.sendText(msg.to, str(njer))
+
             elif "Checkdate " in msg.text:
                 tanggal = msg.text.replace("Checkdate ","")
                 r=requests.get('https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
@@ -2416,6 +2447,17 @@ def bot(op):
                 ultah = data["data"]["ultah"]
                 zodiak = data["data"]["zodiak"]
                 cl.sendText(msg.to,"============ I N F O R M A S I ============\n"+"Date Of Birth : "+lahir+"\nAge : "+usia+"\nUltah : "+ultah+"\nZodiak : "+zodiak+"\n============ I N F O R M A S I ============")
+
+    	    elif "Zodiak " in msg.text:
+                tanggal = msg.text.replace("Zodiak ","")
+                r=requests.get('https://script.google.com/ macros/exec?service=AKfycbw7gKzP-WYV 2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
+                data=r.text
+                data=json.loads(data)
+                lahir = data["data"]["lahir"]
+                usia = data["data"]["usia"]
+                ultah = data["data"]["ultah"]
+                zodiak = data["data"]["zodiak"]
+                cl.sendText(msg.to,"Tanggal Lahir: "+lahir+"\n\nUsia:"+usia+"\n\nUltah: "+ultah+"\n\nZodiak: "+zodiak)
 
             elif msg.text in ["Kalender","Time","Waktu"]:
                 timeNow = datetime.now()
