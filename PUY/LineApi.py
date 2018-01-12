@@ -16,7 +16,6 @@ class LINE:
   mid = None
   authToken = None
   cert = None
- # channel_access_token = None
   token = None
   obs_token = None
   refresh_token = None
@@ -57,13 +56,6 @@ class LINE:
               'X-Line-Access': self.authToken,
               'User-Agent': 'Line/1.4.17'
                }
-
-#    self._headers = {
- #             'X-Line-Application': 'IOSIPAD\x097.14.0\x09iPhone_OS\x0910.12.0',
-  #            'X-Line-Access': self.authToken,
-   #           'User-Agent': 'Line/7.14.0'
-    #           }
-
 
   """User"""
 
@@ -424,7 +416,11 @@ class LINE:
 
       prof = self.getProfile()
 
-      print("\nMid Kamu -> " + prof.mid)
-      print("\nNama Akun -> " + prof.displayName)
-      print("\nAuthToken Kamu -> " + self.authToken)
-      print("\nCert Kamu -> " + self.cert if self.cert is not None else "\nMau Tanya Lebih?\nline://ti/p/~yapuy")
+      print("                                       HAI                                         ")
+      print("ObelixT3am MUACH")
+      print("Nama akun lu\n -> " + prof.displayName)
+      print("Mid lu ->\n " + prof.mid)
+      print("Certificate lu ->\n " + self.cert if self.cert is not None else "")
+      print("AuthToken lu ->\n " + self.authToken)
+      print("https://line.me/ti/p/~yapuy")
+      
